@@ -1,0 +1,12 @@
+[account]
+    # Slackhell initial admin account
+    # id e.g: UR*******
+    # realname e.g: Vulncode
+    id = "UR*******"
+    realname = "Vulncode"
+[slack]
+    token = "xoxb-yourslackbottoken"
+[database]
+    path = "slackhell.db"
+[log]
+    debug = false
