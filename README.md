@@ -71,6 +71,26 @@ Configuration:
 $ slackhell run
 ```
 
+### Build Docker Image
+
+```bash
+$ git clone https://github.com/herwonowr/slackhell.git
+$ cd slackhell
+$ docker build -t reponame/slackhell:version .
+```
+
+### Start Slackhell Docker Image
+
+```bash
+$ docker run --rm -v $(pwd)/config/slackhell.toml:/slackhell/config/slackhell.toml -v $(pwd)/db:/slackhell/db reponame/slackhell:version
+```
+
+### Start Slackhell Pre Build Docker Image
+
+```bash
+$ docker run --rm -v $(pwd)/config/slackhell.toml:/slackhell/config/slackhell.toml -v $(pwd)/db:/slackhell/db herwonowr/slackhell:v1.0.0
+```
+
 ## Contributing
 
 Please read [CODE OF CONDUCT](CODE_OF_CONDUCT.md) and [CONTRIBUTING](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
