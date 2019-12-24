@@ -11,7 +11,7 @@ import (
 var (
 	runCmd = &cobra.Command{
 		Use:   "run",
-		Short: "Run SlackHell C&C",
+		Short: "Run Slackhell C2",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return run(cmd)
 		},

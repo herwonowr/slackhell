@@ -14,8 +14,8 @@ var (
 	rootCmd = &cobra.Command{
 		Use:     "slackhell",
 		Version: version,
-		Short:   "Slack C&C.",
-		Long:    "Slack Command & Control.",
+		Short:   "Slack Web Shell C2.",
+		Long:    "Slack Web Shell Command & Control.",
 	}
 
 	versionCmd = &cobra.Command{
