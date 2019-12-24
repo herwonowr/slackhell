@@ -84,7 +84,7 @@ func (s *botService) runBot() {
 	})
 
 	s.slack.DefaultEvent(func(event interface{}) {
-		log.Println(event)
+		log.Printf("Slackhell event: %v\n", event)
 	})
 
 	s.cmdHelp()
