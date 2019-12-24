@@ -25,23 +25,23 @@ Each commit message should include a **type** and a **subject**:
 Lines should not exceed 72 characters. This allows the message to be easier to read on github as well as in various git tools and produces a nice, neat commit log ie:
 
 ```
-Feat: add user info in the profile view
-Fix: fix a get table issue in the contract view
-Style: update description typo
+feat: add user info in the profile view
+fix: fix a get table issue in the contract view
+style: update description typo
 ```
 
 ### Type
 
 Must be one of the following:
 
-* **Feat**: A new feature
-* **Fix**: A bug fix
-* **Doc**: Documentation only changes
-* **Style**: Changes that do not affect the meaning of the code (white-space, formatting, missing
+* **feat**: a new feature
+* **Fix**: a bug fix
+* **doc**: documentation only changes
+* **style**: changes that do not affect the meaning of the code (white-space, formatting, missing
   semi-colons, etc)
-* **Refactor**: A code change that neither fixes a bug or adds a feature
-* **Test**: Adding missing tests
-* **Chore**: Changes to the build process or auxiliary tools and libraries such as documentation
+* **refactor**: a code change that neither fixes a bug or adds a feature
+* **test**: adding missing tests
+* **chore**: changes to the build process or auxiliary tools and libraries such as documentation
   generation
 
 ### Subject
@@ -49,8 +49,8 @@ Must be one of the following:
 The subject contains succinct description of the change:
 
 * Use the imperative, present tense: "change" not "changed" nor "changes"
-* Capitalize first type letter (e.g. Fix:)
-* Don't capitalize first letter after type (e.g. Fix: fix a get table issue in the contract view)
+* Don't capitalize first type letter (e.g. fix:)
+* Don't capitalize first letter after type (e.g. fix: fix a get table issue in the contract view)
 * If the commit refers to an issue (see section **References in commit messages** below)
 * No period (.) at the end
 
@@ -96,7 +96,7 @@ If the commit refers to an issue, add this information to the commit message hea
 
 In subject header:
 ```
-Fix: [#123] refer to GitHub issue
+fix: [#123] refer to GitHub issue
 ```
 
 In body:
