@@ -57,5 +57,5 @@ func run(cmd *cobra.Command) error {
 
 func init() {
 	rootCmd.AddCommand(runCmd)
-	runCmd.PersistentFlags().StringP("config", "c", "./config/slackhell.toml", "slackhell configuration file")
+	runCmd.PersistentFlags().StringP("config", "c", "./data/config/slackhell.toml", "slackhell configuration file")
 }

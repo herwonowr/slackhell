@@ -42,7 +42,7 @@ func NewConfig(cmd *cobra.Command) (*Config, error) {
 		viper.SetConfigFile(configFile)
 	} else {
 		viper.SetConfigName("slackhell")
-		viper.AddConfigPath("./config")
+		viper.AddConfigPath("./data/config")
 	}
 
 	if err := viper.ReadInConfig(); err != nil {

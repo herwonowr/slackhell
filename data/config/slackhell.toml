@@ -7,6 +7,6 @@
 [slack]
     token = "xoxb-yourslackbottoken"
 [database]
-    path = "slackhell.db"
+    path = "./data/db/slackhell.db"
 [log]
     debug = false
