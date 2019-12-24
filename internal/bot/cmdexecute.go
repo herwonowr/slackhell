@@ -43,7 +43,7 @@ func (s *botService) cmdExecute() {
 				return
 			}
 
-			payload, err := s.helper.Payload(shellcode.Endpoint, shellcode.ShellKey, cmd, 10)
+			payload, err := s.helper.Payload(shellcode.Endpoint, shellcode.ShellKey, cmd, shellcode.Type, 10)
 			if err != nil {
 				s.sendError(err, request, response, true)
 				return
