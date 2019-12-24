@@ -9,10 +9,29 @@ Slackhell is a simple tool for generating and controlling web shell backdoor usi
 ## Features
 
 * Slack C2
-* Users management (ACL)
+* User management
+* Access control
 * Generate web shell backdoor
+* Supported web shell `php` and `asp`
 * Web shell backdoor password protected
 * Shell session
+
+## Available Commands
+
+* `help` - Show help commands
+* `cmd <command>` - Execute command on the target client
+* `generate <type>` - Generate shellcode, valid type `php` and `asp`
+* `shellcodes` - List generated shellcodes
+* `shellupdate <key> <endpoint>` - Update shellcode endpoint
+* `shelldel <key>` - Delete shellcode
+* `user <user>` - Get authorized user information
+* `users` - List authorized users
+* `useradd <user> <role>` - Add authorized user, valid role `admin` and `agent`
+* `userupdate <user> <role>` - Update authorized user, valid role `admin` and `agent`
+* `userdel <user>` - Delete authorized user
+* `session` - Get active session
+* `sessionset <shellcode-key>` - Set active shell session
+* `sessionkill` - Kill active shell session
 
 ## Getting Started
 

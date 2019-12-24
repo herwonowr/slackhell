@@ -30,9 +30,13 @@ func (s *internalService) GetShellcodes() ([]repository.Shellcode, error) {
 	return s.repository.GetShellcodes()
 }
 
-func (s *internalService) CreateShellcode(fileID string, shellkey string, ownerID string, ownerRealName string) error {
+func (s *internalService) CreateShellcode(fileID string, shellType string, shellkey string, ownerID string, ownerRealName string) error {
 	if govalidator.IsNull(fileID) {
 		return errors.New("invalid shellcode file id")
+	}
+
+	if govalidator.IsNull(shellType) {
+		return errors.New("invalid shellcode type")
 	}
 
 	if govalidator.IsNull(shellkey) {
@@ -62,6 +66,7 @@ func (s *internalService) CreateShellcode(fileID string, shellkey string, ownerI
 	shellcode := &repository.Shellcode{
 		FileID:        fileID,
 		ShellKey:      shellkey,
+		Type:          shellType,
 		OwnerID:       shellOwner.SlackID,
 		OwnerRealName: shellOwner.SlackRealName,
 	}
@@ -111,6 +116,7 @@ func (s *internalService) PutShellcode(key string, endpoint string, ownerID stri
 		FileID:        shellcode.FileID,
 		ShellKey:      shellcode.ShellKey,
 		Endpoint:      cleanEndpoint,
+		Type:          shellcode.Type,
 		OwnerID:       shellcode.OwnerID,
 		OwnerRealName: shellcode.OwnerRealName,
 	}

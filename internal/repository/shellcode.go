@@ -16,6 +16,7 @@ type Shellcode struct {
 	FileID        string
 	ShellKey      string
 	Endpoint      string
+	Type          string
 	OwnerID       string
 	OwnerRealName string
 }

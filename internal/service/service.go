@@ -15,7 +15,7 @@ type Service interface {
 	GetShellcodeByID(id int) (*repository.Shellcode, error)
 	GetShellcodeByKey(key string) (*repository.Shellcode, error)
 	GetShellcodes() ([]repository.Shellcode, error)
-	CreateShellcode(fileID string, shellkey string, ownerID string, ownerRealName string) error
+	CreateShellcode(fileID string, shellType string, shellkey string, ownerID string, ownerRealName string) error
 	PutShellcode(key string, endpoint string, ownerID string) error
 	DeleteShellcode(id int) error
 
