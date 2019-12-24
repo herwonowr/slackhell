@@ -15,14 +15,14 @@ var (
 		Use:     "slackhell",
 		Version: version,
 		Short:   "Slack Web Shell C2.",
-		Long:    "Slack Web Shell Command & Control.",
+		Long:    "Slack Web Shell Command & Control\nBy " + author,
 	}
 
 	versionCmd = &cobra.Command{
 		Use:   "version",
 		Short: "Print version",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("Slackhell v%s by %s\n", version, author)
+			fmt.Printf("Slackhell v%s \n", version)
 		},
 		DisableFlagParsing: true,
 	}
