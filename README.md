@@ -100,13 +100,13 @@ $ docker build -t reponame/slackhell:version .
 ### Start Slackhell Docker Image
 
 ```bash
-$ docker run --rm -v $(pwd)/config/slackhell.toml:/slackhell/config/slackhell.toml -v $(pwd)/db:/slackhell/db reponame/slackhell:version
+$ docker run --rm -v $(pwd)/data/config/slackhell.toml:/slackhell/data/config/slackhell.toml -v $(pwd)/data/db:/slackhell/data/db reponame/slackhell:tagname
 ```
 
 ### Start Slackhell Pre Build Docker Image
 
 ```bash
-$ docker run --rm -v $(pwd)/config/slackhell.toml:/slackhell/config/slackhell.toml -v $(pwd)/db:/slackhell/db herwonowr/slackhell:v1.0.0
+$ docker run --rm -v $(pwd)/data/config/slackhell.toml:/slackhell/data/config/slackhell.toml -v $(pwd)/data/db:/slackhell/data/db herwonowr/slackhell:v1.0.0
 ```
 
 ## Contributing
