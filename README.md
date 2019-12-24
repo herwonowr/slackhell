@@ -1,18 +1,17 @@
-# SlackHell C&C
+# SlackHell C2
 
-Slack C&C for Fun and Profit
+Slack Web Shell C2 for Fun and Profit
 
 ## Introduction
 
-Slackhell is a simple tool for generating and controlling shell backdoor using Slack Bot.
+Slackhell is a simple tool for generating and controlling web shell backdoor using Slack Bot.
 
 ## Features
 
-* Slack C&C
+* Slack C2
 * Users management (ACL)
-* Generate PHP Shell backdoor
-* Obfuscated
-* PHP Shell backdoor password protected
+* Generate web shell backdoor
+* Web shell backdoor password protected
 * Shell session
 
 ## Getting Started
