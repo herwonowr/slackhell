@@ -4,9 +4,9 @@ import (
 	"errors"
 
 	"github.com/asaskevich/govalidator"
+	"github.com/herwonowr/slacker"
 	"github.com/herwonowr/slackhell/internal/repository"
 	"github.com/nlopes/slack"
-	"github.com/shomali11/slacker"
 )
 
 func (s *botService) cmdGenerateShellcode() {

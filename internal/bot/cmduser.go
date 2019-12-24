@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/herwonowr/slacker"
 	"github.com/herwonowr/slackhell/internal/repository"
-	"github.com/shomali11/slacker"
 )
 
 func (s *botService) cmdUser() {

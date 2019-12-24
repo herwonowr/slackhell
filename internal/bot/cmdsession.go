@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/asaskevich/govalidator"
-	"github.com/shomali11/slacker"
+	"github.com/herwonowr/slacker"
 )
 
 func (s *botService) cmdGetSession() {

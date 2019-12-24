@@ -1,7 +1,7 @@
 package bot
 
 import (
-	"github.com/shomali11/slacker"
+	"github.com/herwonowr/slacker"
 )
 
 func (s *botService) cmdHelp() {

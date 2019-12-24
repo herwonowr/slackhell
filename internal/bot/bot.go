@@ -4,11 +4,11 @@ import (
 	"context"
 	"log"
 
+	"github.com/herwonowr/slacker"
 	"github.com/herwonowr/slackhell/internal/helper"
 	"github.com/herwonowr/slackhell/internal/repository"
 	"github.com/herwonowr/slackhell/internal/service"
 	"github.com/nlopes/slack"
-	"github.com/shomali11/slacker"
 )
 
 // Service ...
