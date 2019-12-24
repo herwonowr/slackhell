@@ -34,7 +34,7 @@ $ go build -o slackhell cmd/main.go
 ### Change the Configuration
 
 ```bash
-$ vim config/slackhell.toml
+$ vim ./data/config/slackhell.toml
 ```
 
 ```toml
@@ -47,7 +47,7 @@ $ vim config/slackhell.toml
 [slack]
     token = "xoxb-yourslackbottoken"
 [database]
-    path = "slackhell.db"
+    path = "./data/db/slackhell.db"
 [log]
     debug = false
 ```
