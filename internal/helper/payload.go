@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"io/ioutil"
+	"net"
 	"net/http"
 	"net/url"
 	"time"
@@ -39,7 +40,9 @@ func (s *Service) Payload(endpoint string, key string, command string, shellType
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	resp, err := client.Do(req)
-	if err != nil {
+	if err, ok := err.(net.Error); ok && err.Timeout() {
+		return "", errors.New("cannot send command to client, request timeout")
+	} else if err != nil {
 		return "", err
 	}
 
