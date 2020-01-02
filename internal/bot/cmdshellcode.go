@@ -42,7 +42,7 @@ func (s *botService) cmdGenerateShellcode() {
 
 			shellcode, err := s.helper.WriteShellcode(randomKey, shellType)
 			if err != nil {
-				s.sendError(errors.New("generate shell"), request, response, true)
+				s.sendError(err, request, response, true)
 				return
 			}
 

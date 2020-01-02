@@ -46,6 +46,11 @@ func (s *Service) WriteShellcode(key string, shell string) (string, error) {
 	}
 
 	hashKey := hex.EncodeToString(hash.Sum(nil))
+
+	if hasKey := strings.Contains(string(template), "shellcode_key"); !hasKey {
+		return "", errors.New("cannot find `shellcode_key` in the shellcode template")
+	}
+
 	shellcode := strings.Replace(string(template), "shellcode_key", hashKey, -1)
 
 	return shellcode, nil
